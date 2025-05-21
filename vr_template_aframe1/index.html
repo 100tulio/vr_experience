@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Experiência VR - Slides</title>
+    <meta name="description" content="Apresentação VR interativa com slides">
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene vr-mode-ui="enabled: true" cursor="rayOrigin: mouse">
+      <a-assets>
+        <!-- Slides -->
+        <img id="slide1" src="./1_Resumo-Geral-das-Principais-IAs-2025.png" />
+        <img id="slide2" src="./2_IA-de-Texto-Multimodal.png" />
+        <img id="slide3" src="./3_IA-de-Imagem.png" />
+        <img id="slide4" src="./4_IA-de-Voz-Audio.png" />
+        <img id="slide5" src="./5_IA-de-Video.png" />
+        <img id="slide6" src="./6_IA-para-Codigo-e-Dados.png" />
+        <img id="slide7" src="./7_IA-para-Apresentacoes.png" />
+
+        <!-- Texturas do chão e do céu -->
+        <img id="grama" src="./grama.jpg" />
+        <img id="ceu" src="./ceu-nuvens-360.jpg" />
+      </a-assets>
+
+      <!-- Céu e chão -->
+      <a-sky src="#ceu" rotation="0 -90 0"></a-sky>
+      <a-plane src="#grama" rotation="-90 0 0" width="100" height="100" repeat="50 50"></a-plane>
+
+      <!-- Telão que exibe o slide atual -->
+      <a-plane id="tela" 
+               src="#slide3"
+               position="0 2 -5"
+               width="4"
+               height="2.25"
+               rotation="0 0 0"
+               shadow>
+      </a-plane>
+
+      <!-- Botão ANTERIOR -->
+      <a-entity id="btnAnterior" geometry="primitive: plane; height: 0.5; width: 1"
+                material="color: red; opacity: 0.8"
+                text="value: ◀ Anterior; align: center; color: white"
+                position="-2 1 -4.5"
+                class="clickable">
+      </a-entity>
+
+      <!-- Botão PRÓXIMO -->
+      <a-entity id="btnProximo" geometry="primitive: plane; height: 0.5; width: 1"
+                material="color: green; opacity: 0.8"
+                text="value: Próximo ▶; align: center; color: white"
+                position="2 1 -4.5"
+                class="clickable">
+      </a-entity>
+
+      <!-- Botão ENTRAR EM VR -->
+      <a-entity id="btnVR" geometry="primitive: plane; height: 0.5; width: 1.5"
+                material="color: blue; opacity: 0.8"
+                text="value: 🕶 Entrar em VR; align: center; color: white"
+                position="0 0.3 -4.5"
+                class="clickable">
+      </a-entity>
+
+      <!-- Câmera -->
+      <a-entity camera look-controls wasd-controls position="0 1.6 0">
+        <a-cursor></a-cursor>
+      </a-entity>
+    </a-scene>
+
+    <script>
+      const slides = [
+        "#slide1",
+        "#slide2",
+        "#slide3",
+        "#slide4",
+        "#slide5",
+        "#slide6",
+        "#slide7"
+      ];
+      let current = 2; // Começa no slide 3
+
+      const tela = document.querySelector('#tela');
+
+      function atualizarSlide() {
+        tela.setAttribute('src', slides[current]);
+      }
+
+      document.querySelector('#btnAnterior').addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        atualizarSlide();
+      });
+
+      document.querySelector('#btnProximo').addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        atualizarSlide();
+      });
+
+      document.querySelector('#btnVR').addEventListener('click', () => {
+        const scene = document.querySelector('a-scene');
+        if (scene && scene.enterVR) {
+          scene.enterVR();
+        }
+      });
+    </script>
+  </body>
+</html>
