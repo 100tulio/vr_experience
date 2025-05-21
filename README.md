@@ -1,93 +1,101 @@
-# vr_experience
-VR-Experience
-✅ PASSO A PASSO PARA EXECUTAR SUA EXPERIÊNCIA VR
-🗂️ 1. Organize os arquivos
-Coloque todos os arquivos abaixo na mesma pasta, por exemplo:
+# 🕶️ Experiência VR com Slides — Apresentação Interativa em Realidade Virtual
 
-makefile
-Copiar
-Editar
-C:\Users\Marco Tulio\Downloads\Teste_VR\vr_template_aframe1
-Arquivos obrigatórios:
+Este projeto proporciona uma experiência de realidade virtual (VR) com slides, acessível via navegadores compatíveis com **WebXR**. A aplicação foi desenvolvida com **A-Frame**, exibindo um telão de slides em um ambiente 3D com céu e chão realistas, e controle de slides interativo por botões. Compatível com Google Cardboard, VR Box e outros óculos que utilizam o celular.
 
-index.html (código final que te enviei)
+---
 
-grama.jpg (imagem do chão)
+## ✅ Requisitos
 
-ceu-nuvens-360.jpg (imagem do céu 360°)
+- Python 3 instalado
+- Celular com giroscópio e navegador compatível com WebXR (ex: Chrome no Android)
+- Óculos VR (Google Cardboard, VR Box, etc.)
+- Conexão Wi-Fi compartilhada entre o computador e o celular
 
-Slides:
+---
 
-1_Resumo-Geral-das-Principais-IAs-2025.png
+## 🗂️ Estrutura da pasta do projeto
 
-2_IA-de-Texto-Multimodal.png
+Certifique-se de que todos os arquivos abaixo estão na **mesma pasta**, por exemplo:  
+`C:\Users\Marco Tulio\Downloads\Teste_VR\vr_template_aframe1`
 
-3_IA-de-Imagem.png
+vr_template_aframe1/
+├── index.html
+├── grama.jpg
+├── ceu-nuvens-360.jpg
+├── 1_Resumo-Geral-das-Principais-IAs-2025.png
+├── 2_IA-de-Texto-Multimodal.png
+├── 3_IA-de-Imagem.png
+├── 4_IA-de-Voz-Audio.png
+├── 5_IA-de-Video.png
+├── 6_IA-para-Codigo-e-Dados.png
+└── 7_IA-para-Apresentacoes.png
 
-4_IA-de-Voz-Audio.png
 
-5_IA-de-Video.png
 
-6_IA-para-Codigo-e-Dados.png
 
-7_IA-para-Apresentacoes.png
+---
 
-🐍 2. Execute um servidor local com Python
-Requisitos: Python 3 já instalado no seu computador.
+## ⚙️ Como executar o projeto localmente
 
-Abra o Prompt de Comando (CMD) ou PowerShell.
+### 1. Acesse a pasta do projeto via terminal
 
-Vá até a pasta com os arquivos:
-
-bash
-Copiar
-Editar
+```bash
 cd "C:\Users\Marco Tulio\Downloads\Teste_VR\vr_template_aframe1"
-Rode o servidor local:
 
-bash
-Copiar
-Editar
+
+
+2. Inicie um servidor local com Python
+
 python -m http.server 8080
+
 Você verá algo como:
 
-nginx
+yaml
 Copiar
 Editar
-Serving HTTP on :: port 8080 (http://[::]:8080/) ...
-🌐 3. Descubra seu IP local
-No mesmo terminal, digite:
+Serving HTTP on :: port 8080 ...
+
+📲 Acessar via celular
+1. Descubra o IP local do seu computador
+Execute o comando no terminal:
 
 bash
 Copiar
 Editar
 ipconfig
-Copie o IPv4 Address, por exemplo:
+Procure por algo como:
 
 yaml
 Copiar
 Editar
-Endereço IPv4. . . . . . . . . . . . . . : 10.10.101.2
-📱 4. Acesse no navegador do celular
-O celular e o PC precisam estar na mesma rede Wi-Fi!
-
-Abra o navegador do seu celular (Chrome ou Safari).
-
-Digite na barra de endereços:
-
+Endereço IPv4. . . . . . . . . : 10.10.101.2
+2. No navegador do celular (conectado na mesma rede Wi-Fi), acesse:
 cpp
 Copiar
 Editar
 http://10.10.101.2:8080
-A página da sua apresentação VR será carregada.
+🕶️ Ativar modo VR no celular
+Toque no botão azul flutuante: 🕶 Entrar em VR
 
-🕶️ 5. Ativar o modo VR no celular
-Toque no botão azul: 🕶 Entrar em VR
+A tela será dividida automaticamente (modo estereoscópico)
 
-A tela será dividida automaticamente (modo estereoscópico).
+Coloque o celular no óculos VR (ex: Google Cardboard)
 
-Coloque o celular no Google Cardboard ou VR Box.
+Use o botão do Cardboard (ou toque com o dedo) para:
 
-Use o movimento da cabeça para olhar em volta (giroscópio ativo).
+Navegar entre os slides usando os botões: ◀ Anterior e Próximo ▶
 
-Use o botão do óculos (ou toque na tela) para clicar nos botões "◀ Anterior" ou "Próximo ▶".
+🧠 Recursos implementados
+Navegação por slides interativos
+
+Botão flutuante para ativar modo VR
+
+Ambiente 3D com:
+
+Chão com textura de grama
+
+Céu 360° com nuvens
+
+Controle de câmera por giroscópio no celular
+
+Compatível com Google Cardboard e navegadores com WebXR
